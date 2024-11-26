@@ -17,4 +17,5 @@ public class displayArr {
         System.out.println(arr[idx]);
         displayArr(arr,idx+1);
     }
+    
 }
