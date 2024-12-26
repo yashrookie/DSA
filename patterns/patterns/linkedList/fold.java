@@ -54,11 +54,13 @@ class linkedList{
         slow.next =null;
         Node c1= head;
         Node c2 =secondHalf;
-        Node f1 = null;
-        Node f2 = null;
+        //Node f1 = null;
+       // Node f2 = null;
         while(c2 != null){
-        c1.next = f1;
-        c2.next = f2;
+            Node f1 = c1.next;
+            Node f2 = c2.next;
+        c1.next = c1;
+        c2.next = f1;
         c1= f1;
         c2= f2;
     }
