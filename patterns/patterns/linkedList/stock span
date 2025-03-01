@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.Stack;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int []arr = new int[n];
+        for(int i =0;i<n;i++){
+            arr[i]= scn.nextInt();
+        }
+        int[]spans = stockSpan(arr);
+        for(int span:spans){
+            System.out.println(span+"");
+        }
+    }
+    public static int[]stockSpan(int[]arr){
+        int n =arr.length;
+        int[]spans = new int[n];
+        Stack<Integer>st = new Stack<>();
+        for(int i =0;i<n;i++){
+            while(!st.isEmpty() && arr[st.peek()]<=arr[i]){
+                st.pop();
+            }
+            spans[i]= st.isEmpty()?(i+1):(i - st.peek());
+            st.push(i);
+        }
+        return spans;
+    }
+}
