@@ -1,0 +1,105 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        LinkedList list = new LinkedList();
+        while(list.size()<n){
+            int data = scn.nextInt();
+            if(data == -1){
+                break;
+            }
+            list.addLast(data);
+        }
+        System.out.println("original list");
+        list.printList();
+        list.head = list.mergeSort(list.head);
+        System.out.println("sorted list");
+        list.printList();
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList{
+     Node head;
+    private Node tail;
+    private int size;
+    LinkedList(){
+        this.head = null;
+        this.tail = null;
+        this.size =0;
+    }
+    void addLast(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else{
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size++;
+    }
+    int size(){
+        return size;
+    }
+    Node mergeSort(Node head){
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node middle = getMiddle(head);
+        Node nextofMiddle = middle.next;
+        middle.next = null;
+    //}
+    Node left = mergeSort(head);
+    Node right = mergeSort(nextofMiddle);
+    return mergeTwoLists(left,right);
+    
+}
+Node getMiddle(Node head){
+    if(head == null){
+        return head;
+    }
+    Node slow = head;
+    Node fast = head;
+    while(fast.next != null && fast.next.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+Node mergeTwoLists(Node l1,Node l2){
+    Node dummy = new Node(-1);
+    Node prev = dummy;
+   // Node c1 = l1.head;
+    //Node c2 = l2.head;
+    while(l1 != null || l2 != null){
+        if(l1.data<l2.data){
+            prev.next = l1;
+            l1 = l1.next;
+        }
+        else{
+            prev.next = l2;
+            l2 = l2.next;
+        }
+        prev = prev.next;
+    }
+    prev.next = (l1 != null)?l1:l2;
+    return dummy.next;
+}
+void printList(){
+    Node current = head;
+    while(current != null){
+        System.out.println(current.data+"->");
+        current = current.next;
+    }
+    System.out.println("null");
+}
+}
