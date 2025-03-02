@@ -1,0 +1,98 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        LinkedList list = new LinkedList();
+        while(list.size()<n){
+            int data = scn.nextInt();
+            if(data == -1){
+                break;
+            }
+            list.addLast(data);
+        }
+        System.out.println("original list");
+        list.printList();
+        list.fold();
+        System.out.println("folded list");
+        list.printList();
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList{
+    private Node head;
+    private Node tail;
+    private int size;
+    LinkedList(){
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+    void addLast(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size++;
+    }
+    int size(){
+        return size;
+    }
+    void fold(){
+        if(head == null || head.next == null){
+            return;
+        }
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node secondHalfHead = reverse(slow.next);
+        slow.next = null;
+        Node c1 = head;
+        Node c2 = secondHalfHead;
+        
+        while(c2 != null){
+            Node f1 = c1.next;
+            Node f2 = c2.next;
+            c1.next = c2;
+            c2.next = f1;
+            c1= f1;
+            c2 = f2;
+        }
+        
+    }
+    private Node reverse(Node head){
+        Node prev = null;
+        Node current = head;
+        Node forw = null;
+        while(current != null){
+              forw = current.next;
+              current.next = prev;
+              prev = current;
+              current = forw;
+        }
+        return prev;
+    }
+    void printList(){
+        Node current = head;
+        while(current != null){
+            System.out.println(current.data+"->");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
