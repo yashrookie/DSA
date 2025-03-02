@@ -1,0 +1,59 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        LinkedList list = new LinkedList();
+        int data = scn.nextInt();
+        list.addLast(data);
+        System.out.println("original list");
+        list.printList();
+        list.removeDuplicates();
+        System.out.println("list after removing duplicates");
+        list.printList();
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    void addLast(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+        }
+        Node temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = newNode;
+    }
+    void removeDuplicates(){
+        if(head == null || head.next == null){
+            return;
+        }
+        Node current = head;
+        while(current != null && current.next != null){
+            if(current.data == current.next.data){
+                current.next = current.next.next;
+            }
+            else{
+                current = current.next;
+            }
+        }
+    }
+    void printList(){
+        Node current = head;
+        while(current != null){
+            System.out.println(current.data+"->");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
