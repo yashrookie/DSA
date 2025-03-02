@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        LinkedList list = new LinkedList();
+        while(list.size()<n){
+            int data = scn.nextInt();
+            if(data == -1){
+                break;
+            }
+            list.addLast(data);
+       }
+        System.out.println("original list");
+        list.printList();
+        Node nodeToDelete = list.head.next.next;
+        list.deleteNode(nodeToDelete);
+        System.out.println("list after deleting node");
+        list.printList();
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    Node tail;
+    int size;
+    void addLast(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+        }
+       Node temp = head;
+       while(temp.next != null){
+        temp = temp.next;   
+       }
+       temp.next = newNode;
+    }
+    int size(){
+        return size;
+    }
+    void deleteNode(Node node){
+        if(node == null || node.next == null){
+            System.out.println("node can't be detected");
+            return;
+        }
+        node.data = node.next.data;
+        node.next =node.next.next;
+    }
+    void printList(){
+        Node current = head;
+        while(current != null){
+            System.out.println(current.data+"->");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
