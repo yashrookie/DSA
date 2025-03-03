@@ -1,0 +1,55 @@
+import java.util.Scanner;
+import java.util.Stack;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        String expression = scn.nextLine();
+        infixConversion(expression);
+    }
+    public static void infixConversion(String exp){
+        Stack<String>postfix= new Stack<>();
+        Stack<String>prefix = new Stack<>();
+        Stack<Character>operators = new Stack<>();
+        for(int i =0;i<exp.length();i++){
+            char ch = exp.charAt(i);
+            if(Character.isLetterOrDigit(ch)){
+                postfix.push(ch+"");
+                prefix.push(ch+"");
+            }
+            else if(ch =='('){
+                operators.push(ch);
+            }
+            else if(ch ==')'){
+                while(!operators.isEmpty() && operators.peek()!='('){
+                    processConversion(operators,postfix,prefix);
+                }
+                operators.pop();
+            }
+            else if(ch =='+' ||ch == '-' || ch == '*' || ch == '/'){
+                while(!operators.isEmpty() && precedence(operators.peek())>=precedence(ch)){
+                    processConversion(operators,postfix,prefix);
+                }
+                operators.push(ch);
+            }
+        }
+        while(!operators.isEmpty()){
+            processConversion(operators,postfix,prefix);
+        }
+        System.out.println("postfix" +postfix.pop());
+        System.out.println("prefix"+prefix.pop());
+    }
+    public static void processConversion(Stack<Character>operators,Stack<String>postfix,Stack<String>prefix){
+        char op = operators.pop();
+        String post2= postfix.pop();
+        String post1= postfix.pop();
+        postfix.push(post1+post2+op);
+        String pre2 = prefix.pop();
+        String pre1 = prefix.pop();
+        prefix.push(op+pre1+pre2);
+    }
+    public static int precedence(char op){
+        if(op == '+'|| op =='-')return 1;
+        if(op == '*'|| op == '/')return 2;
+        return 0;
+    }
+}
