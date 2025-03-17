@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int sum =getSum(n);
+        System.out.println(sum);
+        // using for loop
+        for(int i =1;i<=n;i++){
+            sum+=i;
+            System.out.println(sum);
+        }
+        // by using direct formulae
+        // System.out.println(n*(n+1)/2);
+        // by using recursion
+        
+    }
+    // public static int getSum(int n){
+    //     if( n ==0){
+    //         return n;
+    //     }
+    //     return n+getSum(n-1);
+    // }
+}
