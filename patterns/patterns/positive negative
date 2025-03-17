@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n =scn.nextInt();
+        //brute force
+        // if(n<0){
+        //     System.out.println(n+"is negative");
+        // }
+        // else if(n>0){
+        //     System.out.println(n+"is positove");
+        // }
+        // else{
+        //     System.out.println("zero");
+        // }
+        //using nested if-else
+        // if(n>=0){
+        //     if(n==0){
+        //         System.out.println("zero");
+        //     }
+        //     else{
+        //         System.out.println(n+"is positive");
+        //     }
+        // }
+        // else{
+        //     System.out.println(n+"is negative");
+        // }
+        //using ternary operator
+        if(n==0){
+            System.out.println("zero");
+        }
+        else{
+            String result=(n>0)?"the no.is positive":"the no.is negative";
+            System.out.println(result);
+        }
+    }
+}
