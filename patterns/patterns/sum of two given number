@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n1 = scn.nextInt();
+        int n2 = scn.nextInt();
+        int sum = getsum(0,n1,n2);
+        System.out.println(sum);
+        // brute force
+        // int sum =0;
+        // for(int i =n1;i<=n2;i++){
+        //     sum= sum+i;
+        //     System.out.println("sum of number"+sum);
+        // }
+        // by using direct formulae
+        // int sum = n2*(n2+1)/2 - n1*(n1+1)/2 +n1;
+        // System.out.println(sum);
+    }
+    // using recursion
+    public static int getsum(int sum,int n1,int n2){
+        if(n1>n2){
+            return sum;
+        }
+        return n1+ getsum(sum,n1+1,n2);
+    }
+}
