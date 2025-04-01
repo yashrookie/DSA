@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int a = scn.nextInt();
+        int b = scn.nextInt();
+        System.out.println("before swapping a="+a+",b="+b);
+        a = a+b;
+        b = a-b;
+        a = a-b;
+                System.out.println("after swapping a="+a+",b="+b);
+    }
+}
