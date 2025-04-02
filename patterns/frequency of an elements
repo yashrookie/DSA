@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int []arr = new int[n];
+        for(int i =0;i<n;i++){
+            arr[i]= scn.nextInt();
+        }
+        countFrequency(arr,n);
+    }
+    public static void countFrequency(int[]arr,int n){
+        boolean []visited = new boolean[n];
+        for(int i =0;i<n;i++){
+            if(visited[i]){
+                continue;
+            }
+            int count = 1;
+            for(int j = i+1;j<n;j++){
+                if(arr[i]==arr[j]){
+                    count++;
+                    visited[j]=true;
+                }
+            }
+            System.out.println(arr[i]+"occur"+count+"times");
+        }
+    }
+}
+
