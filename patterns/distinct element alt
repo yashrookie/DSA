@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.HashSet;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[]arr = new int[n];
+        for(int i =0;i<n;i++){
+            arr[i]= scn.nextInt();
+        }
+        System.out.println("distinct count" +countDistinct(arr,n));
+    }
+   public static int countDistinct(int[]arr,int n){
+       int count =0;
+       for(int i =0;i<n;i++){
+           boolean isUnique = true;
+       for(int j =0;j<i;j++){
+           if(arr[i]== arr[j]){
+               isUnique = false;
+               break;
+           }
+       }
+       if(isUnique){
+           count++;
+       }
+   }
+   return count;
+   }
+}
