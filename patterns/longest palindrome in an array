@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int []arr = new int[n];
+        for(int i =0;i<n;i++){
+            arr[i]= scn.nextInt();
+        }
+        int result = longestPalindrome(arr,n);
+        System.out.println(result+"");
+    }
+    public static int longestPalindrome(int []arr,int n){
+        int maxPalindrome = -1;
+        for(int i =0;i<n;i++){
+            if(isPalindrome(arr[i])){
+                maxPalindrome = Math.max(maxPalindrome,arr[i]);
+            }
+        }
+        return maxPalindrome;
+    }
+    public static boolean isPalindrome(int n){
+        int original = n;
+        int reverse =0;
+        while(n>0){
+            int digit = n%10;
+            reverse = reverse*10+digit;
+            n = n/10;
+        }
+        return original == reverse;
+    }
+}
