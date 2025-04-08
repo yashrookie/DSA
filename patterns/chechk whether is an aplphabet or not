@@ -1,0 +1,31 @@
+// import java.util.Scanner;
+// public class Main{
+//     public static void main(String[]args){
+//         Scanner scn = new Scanner(System.in);
+//         char ch = scn.next().charAt(0);
+//         if((ch>='a'&& ch<='z') || (ch>='A' &&ch<='Z')){
+//             System.out.println("the inserted element"+ch+"is an alphabet");
+//         }
+//         else{
+//           System.out.println("the inserted element"+ch+"is not an alphabet"); 
+//         }
+//     }
+// }
+
+
+
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        char ch = scn.next().charAt(0);
+        int ascii = (int)ch;
+        if((ascii>=65 && ascii<=90) ||(ascii>=97 &&ascii<=122 )){
+            System.out.println("the inserted element" +ch+"is an alphabet");
+        }
+        else{
+                       System.out.println("the inserted element" +ch+"is  not an alphabet"); 
+        }
+        
+    }
+}
