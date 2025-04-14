@@ -1,0 +1,10 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+        String s1 = "";
+        s1 = str.replaceAll("[a-z786*&6%$#]","");
+        System.out.println(s1);
+    }
+}
