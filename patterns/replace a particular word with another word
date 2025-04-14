@@ -1,0 +1,11 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        String sentence = scn.nextLine();
+        String oldWord = scn.nextLine();
+        String newWord = scn.nextLine();
+        String result = sentence.replace(oldWord,newWord);
+        System.out.println("updated word"+result);
+    }
+}
