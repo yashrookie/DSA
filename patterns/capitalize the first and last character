@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+        String s1 = "";
+        String[]words = str.split("\\s");
+        for(String word :words){
+            int length = word.length();
+            if(length == 1){
+                 s1+=word.toUpperCase()+"";
+            }
+            else{
+                String firstChar = word.substring(0,1).toUpperCase();
+                String restChar = word.substring(1,length - 1);
+                String lastChar = Character.toString(word.charAt(length - 1)).toUpperCase();
+                s1 += firstChar+restChar+lastChar+"";
+            }
+        }
+        System.out.println("output"+s1.trim());
+    }
+}
