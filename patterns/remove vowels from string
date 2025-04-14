@@ -1,0 +1,24 @@
+// import java.util.Scanner;
+// public class Main{
+//     public static void main(String[]args){
+//         Scanner scn = new Scanner(System.in);
+//         String str = scn.nextLine();
+//         String s1 ="";
+//         s1 = str.replaceAll("[aeiou]","");
+//         System.out.println("after removing vowels"+s1);
+//     }
+// }
+
+
+
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+        System.out.println(removevowels(str));
+    }
+    public static String removevowels(String str){
+        return str.replaceAll("[aeiou]","");
+    }
+}
