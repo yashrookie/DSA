@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Student s1 = new Student(1,"Alice");
+        Student s2 = new Student(2,"om");
+        s1.display();
+        s2.display();
+        Student.college = "XYZ university";
+        System.out.println("After college name change");
+        s1.display();
+        s2.display();
+    }
+}
+    class Student{
+        int id ;
+        String name;
+        static String college = "ABC college";
+        Student(int id , String name){
+            this.id = id;
+            this.name = name;
+        }
+        void display(){
+            System.out.println(id+" "+name+" "+college);
+        }
+    }
