@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[]args){
+        Scanner scn = new Scanner(System.in);
+        int a = scn.nextInt();
+        int b = scn.nextInt();
+        long fact1 = factorial(a);
+        long fact2 = factorial(b);
+        long diff = Math.abs(fact1 - fact2);
+        System.out.println("factorial of"+a+"is"+fact1);
+        System.out.println("factorial of"+b+"is"+fact2);
+        System.out.println("absolute differnce"+diff);
+    }
+    public static long factorial(int num){
+        long fact =1;
+        for(int i =2;i<=num;i++){
+            fact *=i;
+        }
+        return fact;
+    }
+}
