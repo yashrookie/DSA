@@ -1,0 +1,16 @@
+class Parent{
+    int x = 10;
+}
+class child extends Parent{
+    int x = 20;
+    void display(){
+        System.out.println("child"+x);
+        System.out.println("Parent"+super.x);
+    }
+}
+public class Main{
+    public static void main(String[]args){
+        child obj = new child();
+        obj.display();
+    }
+}
